@@ -30,18 +30,25 @@
                         </div>
                     </div>
 
-                    <div class="space-y-3">
-                        <h1
-                            class="text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl"
-                        >
-                            {{ profile.name }}
-                        </h1>
-                        <p
-                            v-if="profile.title"
-                            class="text-lg text-zinc-200 sm:text-2xl"
-                        >
-                            {{ profile.title }}
-                        </p>
+                    <div class="flex flex-wrap items-center gap-5 sm:gap-6">
+                        <img
+                            :src="profileImageUrl"
+                            alt="Profile photo"
+                            class="h-24 w-24 rounded-full border border-white/20 object-cover shadow-lg sm:h-32 sm:w-32"
+                        />
+                        <div class="space-y-3">
+                            <h1
+                                class="text-balance text-3xl font-semibold tracking-tight text-white sm:text-5xl"
+                            >
+                                {{ profile.name }}
+                            </h1>
+                            <p
+                                v-if="profile.title"
+                                class="text-lg text-zinc-200 sm:text-2xl"
+                            >
+                                {{ profile.title }}
+                            </p>
+                        </div>
                     </div>
 
                     <div class="flex flex-wrap gap-3 text-sm text-zinc-300">
@@ -61,6 +68,13 @@
                     </div>
 
                     <div class="flex flex-wrap gap-3">
+                        <a
+                            :href="resumeFileUrl"
+                            :download="resumeFileName"
+                            class="resume-action"
+                        >
+                            Download Resume
+                        </a>
                         <a
                             v-if="profile.linkedin"
                             :href="profile.linkedin"
@@ -296,6 +310,10 @@ const props = defineProps({
     skills: Array,
     projects: Array,
 });
+
+const profileImageUrl = "/storage/profile-image.jpg";
+const resumeFileName = "Raven_Alvarez_Resume_2026.docx";
+const resumeFileUrl = `/storage/${resumeFileName}`;
 
 const groupedSkills = computed(() => {
     return props.skills.reduce((acc, skill) => {
