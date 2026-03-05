@@ -17,7 +17,7 @@
                         <p
                             class="tracking-[0.2em] text-xs uppercase text-red-300/90"
                         >
-                            RavenA Resume
+                            Raven Resume
                         </p>
                         <div
                             class="flex items-center gap-2 text-xs text-zinc-300"
@@ -25,7 +25,8 @@
                             <span
                                 class="inline-block h-2 w-2 rounded-full bg-red-400"
                             ></span>
-                            Open to impactful engineering work
+                            Open to remote work and hybrid relocation
+                            opportunities
                         </div>
                     </div>
 
