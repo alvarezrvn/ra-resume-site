@@ -112,7 +112,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Link, router } from "@inertiajs/vue3";
-import { parseISO, format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 defineProps({
     education: Array,

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Inertia\Inertia;
+use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 
 class ProjectController extends Controller
 {
