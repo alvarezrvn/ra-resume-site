@@ -311,9 +311,9 @@ const props = defineProps({
     projects: Array,
 });
 
-const profileImageUrl = "/storage/profile-image.jpg";
+const profileImageUrl = "/assets/profile-image.jpg";
 const resumeFileName = "Raven_Alvarez_Resume_2026.docx";
-const resumeFileUrl = `/storage/${resumeFileName}`;
+const resumeFileUrl = `/assets/${resumeFileName}`;
 
 const groupedSkills = computed(() => {
     return props.skills.reduce((acc, skill) => {
