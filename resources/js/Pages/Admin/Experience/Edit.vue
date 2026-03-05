@@ -22,7 +22,7 @@
                                     v-model="form.company"
                                     type="text"
                                     id="company"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     required
                                 />
                                 <div
@@ -44,7 +44,7 @@
                                     v-model="form.position"
                                     type="text"
                                     id="position"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     required
                                 />
                                 <div
@@ -66,7 +66,7 @@
                                     v-model="form.location"
                                     type="text"
                                     id="location"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.location"
@@ -87,7 +87,7 @@
                                     v-model.number="form.order"
                                     type="number"
                                     id="order"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.order"
@@ -108,7 +108,7 @@
                                     v-model="form.start_date"
                                     type="date"
                                     id="start_date"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     required
                                 />
                                 <div
@@ -130,7 +130,7 @@
                                     v-model="form.end_date"
                                     type="date"
                                     id="end_date"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     :disabled="form.current"
                                 />
                                 <div
@@ -147,7 +147,7 @@
                                     <input
                                         v-model="form.current"
                                         type="checkbox"
-                                        class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                        class="rounded border-gray-300 text-red-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     />
                                     <span class="ml-2 text-sm text-gray-700"
                                         >I currently work here</span
@@ -166,7 +166,7 @@
                                     v-model="form.description"
                                     id="description"
                                     rows="6"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     placeholder="Describe your responsibilities and achievements..."
                                 ></textarea>
                                 <div
@@ -188,7 +188,7 @@
                             <button
                                 type="submit"
                                 :disabled="form.processing"
-                                class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50"
+                                class="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-500 disabled:opacity-50"
                             >
                                 {{
                                     form.processing
@@ -227,3 +227,4 @@ const submit = () => {
     form.put(route("admin.experiences.update", props.experience.id));
 };
 </script>
+

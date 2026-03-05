@@ -32,7 +32,7 @@
                             <div class="text-gray-500 text-sm mb-2">
                                 Experiences
                             </div>
-                            <div class="text-3xl font-bold text-blue-600">
+                            <div class="text-3xl font-bold text-red-300">
                                 {{ stats.experiences }}
                             </div>
                         </div>
@@ -80,13 +80,13 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <Link
                                 :href="route('admin.profile.edit')"
-                                class="flex items-center justify-between p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition"
+                                class="flex items-center justify-between p-4 bg-red-500/10 rounded-lg hover:bg-red-500/20 transition"
                             >
-                                <span class="font-medium text-blue-900"
+                                <span class="font-medium text-red-100"
                                     >Edit Profile</span
                                 >
                                 <svg
-                                    class="w-5 h-5 text-blue-600"
+                                    class="w-5 h-5 text-red-300"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -221,3 +221,4 @@ defineProps({
     stats: Object,
 });
 </script>
+

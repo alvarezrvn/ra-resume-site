@@ -1,3 +1,177 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		--resume-bg: #09090b;
+		--resume-panel: #18181b;
+		--resume-accent: #ff2d20;
+		--resume-accent-soft: #ff5f55;
+		--resume-text: #f4f4f5;
+		--resume-muted: #a1a1aa;
+	}
+}
+
+@layer components {
+	.resume-shell {
+		background:
+			radial-gradient(circle at 15% 20%, rgba(255, 45, 32, 0.18), transparent 35%),
+			radial-gradient(circle at 80% 85%, rgba(225, 29, 72, 0.12), transparent 40%),
+			linear-gradient(145deg, #09090b 0%, #111114 45%, #0a0a0d 100%);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.resume-noise {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		opacity: 0.18;
+		background-image: radial-gradient(rgba(255, 255, 255, 0.4) 0.45px, transparent 0.45px);
+		background-size: 3px 3px;
+	}
+
+	.resume-glow {
+		position: absolute;
+		z-index: 0;
+		width: 28rem;
+		height: 28rem;
+		border-radius: 9999px;
+		filter: blur(90px);
+		pointer-events: none;
+	}
+
+	.resume-glow-top {
+		top: -12rem;
+		right: -10rem;
+		background: rgba(255, 45, 32, 0.24);
+	}
+
+	.resume-glow-bottom {
+		bottom: -14rem;
+		left: -12rem;
+		background: rgba(225, 29, 72, 0.2);
+	}
+
+	.resume-panel {
+		background: linear-gradient(160deg, rgba(24, 24, 27, 0.95) 0%, rgba(10, 10, 12, 0.95) 100%);
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.06),
+			0 24px 50px rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(6px);
+	}
+
+	.resume-heading {
+		color: var(--resume-text);
+		font-size: 1.35rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+	}
+
+	.resume-pill {
+		display: inline-flex;
+		align-items: center;
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		border-radius: 9999px;
+		background: rgba(0, 0, 0, 0.28);
+		padding: 0.4rem 0.8rem;
+		color: var(--resume-muted);
+		transition: border-color 180ms ease, color 180ms ease;
+	}
+
+	.resume-pill:hover {
+		border-color: rgba(255, 45, 32, 0.65);
+		color: #fca5a5;
+	}
+
+	.resume-action {
+		border: 1px solid rgba(255, 45, 32, 0.5);
+		border-radius: 0.7rem;
+		padding: 0.6rem 0.95rem;
+		color: #fecaca;
+		background: linear-gradient(180deg, rgba(255, 45, 32, 0.18) 0%, rgba(255, 45, 32, 0.08) 100%);
+		transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+	}
+
+	.resume-action:hover {
+		transform: translateY(-1px);
+		border-color: rgba(255, 95, 85, 0.8);
+		background: linear-gradient(180deg, rgba(255, 45, 32, 0.28) 0%, rgba(255, 45, 32, 0.14) 100%);
+	}
+
+	.reveal-up {
+		animation: reveal-up 650ms ease both;
+	}
+}
+
+@keyframes reveal-up {
+	from {
+		transform: translateY(12px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@layer utilities {
+	.dark-laravel {
+		color: #e4e4e7;
+		background-color: #09090b;
+	}
+
+	.dark-laravel .bg-white {
+		background-color: #18181b !important;
+		border-color: #3f3f46 !important;
+	}
+
+	.dark-laravel .bg-gray-50,
+	.dark-laravel .bg-gray-100 {
+		background-color: #09090b !important;
+	}
+
+	.dark-laravel .text-gray-900,
+	.dark-laravel .text-gray-800,
+	.dark-laravel .text-gray-700 {
+		color: #f4f4f5 !important;
+	}
+
+	.dark-laravel .text-gray-600,
+	.dark-laravel .text-gray-500,
+	.dark-laravel .text-gray-400 {
+		color: #a1a1aa !important;
+	}
+
+	.dark-laravel .border-gray-100,
+	.dark-laravel .border-gray-200,
+	.dark-laravel .border-gray-300 {
+		border-color: #3f3f46 !important;
+	}
+
+	.dark-laravel .hover\:bg-gray-50:hover,
+	.dark-laravel .hover\:bg-gray-100:hover {
+		background-color: #27272a !important;
+	}
+
+	.dark-laravel .hover\:text-gray-700:hover,
+	.dark-laravel .hover\:text-gray-800:hover,
+	.dark-laravel .hover\:text-gray-900:hover {
+		color: #ffffff !important;
+	}
+
+	.dark-laravel .focus\:ring-indigo-500:focus {
+		--tw-ring-color: rgba(248, 113, 113, 0.95) !important;
+	}
+
+	.dark-laravel .focus\:border-indigo-500:focus,
+	.dark-laravel .focus\:border-blue-500:focus {
+		border-color: #f87171 !important;
+	}
+
+	.dark-laravel .focus\:ring-blue-500:focus {
+		--tw-ring-color: rgba(248, 113, 113, 0.95) !important;
+	}
+}

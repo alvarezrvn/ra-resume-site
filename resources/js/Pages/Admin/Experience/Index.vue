@@ -7,7 +7,7 @@
                 </h2>
                 <Link
                     :href="route('admin.experiences.create')"
-                    class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                    class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500"
                 >
                     Add Experience
                 </Link>
@@ -78,7 +78,7 @@
                                                     experience.id,
                                                 )
                                             "
-                                            class="text-blue-600 hover:text-blue-800 px-3 py-1 border border-blue-600 rounded"
+                                            class="text-red-300 hover:text-red-100 px-3 py-1 border border-red-400 rounded"
                                         >
                                             Edit
                                         </Link>
@@ -123,3 +123,4 @@ const deleteExperience = (id) => {
     }
 };
 </script>
+

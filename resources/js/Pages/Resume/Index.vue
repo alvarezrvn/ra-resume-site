@@ -1,236 +1,281 @@
 <template>
-    <div class="min-h-screen bg-gray-50">
-        <!-- Header/Profile Section -->
-        <div
-            class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16"
+    <div class="resume-shell min-h-screen text-zinc-100">
+        <div class="resume-noise"></div>
+        <div class="resume-glow resume-glow-top"></div>
+        <div class="resume-glow resume-glow-bottom"></div>
+
+        <main
+            class="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 pt-8 sm:px-6 lg:px-8"
         >
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div v-if="profile" class="text-center">
-                    <h1 class="text-5xl font-bold mb-2">{{ profile.name }}</h1>
-                    <p v-if="profile.title" class="text-2xl text-blue-100 mb-4">
-                        {{ profile.title }}
-                    </p>
-                    <div class="flex justify-center space-x-6 mb-6">
+            <section
+                class="resume-panel reveal-up rounded-3xl border border-white/10 p-6 sm:p-10"
+            >
+                <div v-if="profile" class="space-y-6">
+                    <div
+                        class="flex flex-wrap items-center justify-between gap-4"
+                    >
+                        <p
+                            class="tracking-[0.2em] text-xs uppercase text-red-300/90"
+                        >
+                            RavenA Resume
+                        </p>
+                        <div
+                            class="flex items-center gap-2 text-xs text-zinc-300"
+                        >
+                            <span
+                                class="inline-block h-2 w-2 rounded-full bg-red-400"
+                            ></span>
+                            Open to impactful engineering work
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h1
+                            class="text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl"
+                        >
+                            {{ profile.name }}
+                        </h1>
+                        <p
+                            v-if="profile.title"
+                            class="text-lg text-zinc-200 sm:text-2xl"
+                        >
+                            {{ profile.title }}
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 text-sm text-zinc-300">
                         <a
                             v-if="profile.email"
                             :href="`mailto:${profile.email}`"
-                            class="text-blue-100 hover:text-white"
+                            class="resume-pill"
                         >
                             {{ profile.email }}
                         </a>
-                        <span v-if="profile.phone" class="text-blue-100">{{
+                        <span v-if="profile.phone" class="resume-pill">{{
                             profile.phone
                         }}</span>
-                        <span v-if="profile.location" class="text-blue-100">{{
+                        <span v-if="profile.location" class="resume-pill">{{
                             profile.location
                         }}</span>
                     </div>
-                    <div class="flex justify-center space-x-4">
+
+                    <div class="flex flex-wrap gap-3">
                         <a
                             v-if="profile.linkedin"
                             :href="profile.linkedin"
                             target="_blank"
-                            class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-blue-50"
+                            class="resume-action"
                             >LinkedIn</a
                         >
                         <a
                             v-if="profile.github"
                             :href="profile.github"
                             target="_blank"
-                            class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-blue-50"
+                            class="resume-action"
                             >GitHub</a
                         >
                         <a
                             v-if="profile.website"
                             :href="profile.website"
                             target="_blank"
-                            class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-blue-50"
+                            class="resume-action"
                             >Website</a
                         >
                     </div>
                 </div>
+            </section>
+
+            <div class="mt-8 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+                <div class="space-y-8">
+                    <section
+                        v-if="profile?.summary"
+                        class="resume-panel reveal-up rounded-2xl border border-white/10 p-6 sm:p-8"
+                    >
+                        <h2 class="resume-heading">Profile</h2>
+                        <p class="mt-4 leading-7 text-zinc-300">
+                            {{ profile.summary }}
+                        </p>
+                    </section>
+
+                    <section
+                        v-if="experiences.length > 0"
+                        class="resume-panel reveal-up rounded-2xl border border-white/10 p-6 sm:p-8"
+                    >
+                        <h2 class="resume-heading">Experience</h2>
+                        <div class="mt-6 space-y-6">
+                            <article
+                                v-for="exp in experiences"
+                                :key="exp.id"
+                                class="rounded-xl border border-white/10 bg-black/20 p-5"
+                            >
+                                <div
+                                    class="flex flex-wrap items-start justify-between gap-3"
+                                >
+                                    <div>
+                                        <h3
+                                            class="text-xl font-medium text-zinc-100"
+                                        >
+                                            {{ exp.position }}
+                                        </h3>
+                                        <p class="mt-1 text-red-300">
+                                            {{ exp.company }}
+                                        </p>
+                                    </div>
+                                    <p class="text-sm text-zinc-400">
+                                        {{ formatDate(exp.start_date) }} -
+                                        {{
+                                            exp.current
+                                                ? "Present"
+                                                : formatDate(exp.end_date)
+                                        }}
+                                    </p>
+                                </div>
+                                <p
+                                    v-if="exp.location"
+                                    class="mt-2 text-sm text-zinc-400"
+                                >
+                                    {{ exp.location }}
+                                </p>
+                                <p
+                                    v-if="exp.description"
+                                    class="mt-3 whitespace-pre-line text-zinc-300"
+                                >
+                                    {{ exp.description }}
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section
+                        v-if="projects.length > 0"
+                        class="resume-panel reveal-up rounded-2xl border border-white/10 p-6 sm:p-8"
+                    >
+                        <h2 class="resume-heading">Projects</h2>
+                        <div class="mt-6 grid gap-5 sm:grid-cols-2">
+                            <article
+                                v-for="project in projects"
+                                :key="project.id"
+                                class="rounded-xl border border-white/10 bg-black/20 p-5"
+                            >
+                                <h3 class="text-lg font-medium text-zinc-100">
+                                    {{ project.name }}
+                                </h3>
+                                <p
+                                    v-if="project.description"
+                                    class="mt-2 text-sm text-zinc-300"
+                                >
+                                    {{ project.description }}
+                                </p>
+                                <div
+                                    v-if="project.technologies?.length"
+                                    class="mt-3 flex flex-wrap gap-2"
+                                >
+                                    <span
+                                        v-for="tech in project.technologies"
+                                        :key="tech"
+                                        class="rounded-full border border-red-300/40 bg-red-400/10 px-2.5 py-1 text-xs text-red-200"
+                                    >
+                                        {{ tech }}
+                                    </span>
+                                </div>
+                                <div class="mt-4 flex flex-wrap gap-3 text-sm">
+                                    <a
+                                        v-if="project.url"
+                                        :href="project.url"
+                                        target="_blank"
+                                        class="text-red-300 transition hover:text-red-200"
+                                        >View Project</a
+                                    >
+                                    <a
+                                        v-if="project.github_url"
+                                        :href="project.github_url"
+                                        target="_blank"
+                                        class="text-red-300 transition hover:text-red-200"
+                                        >GitHub</a
+                                    >
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="space-y-8">
+                    <section
+                        v-if="skills.length > 0"
+                        class="resume-panel reveal-up rounded-2xl border border-white/10 p-6 sm:p-8"
+                    >
+                        <h2 class="resume-heading">Skills</h2>
+                        <div class="mt-5 space-y-5">
+                            <div
+                                v-for="(
+                                    categorySkills, category
+                                ) in groupedSkills"
+                                :key="category"
+                            >
+                                <h3
+                                    class="text-sm font-semibold uppercase tracking-[0.12em] text-zinc-400"
+                                >
+                                    {{ category }}
+                                </h3>
+                                <div class="mt-3 flex flex-wrap gap-2">
+                                    <span
+                                        v-for="skill in categorySkills"
+                                        :key="skill.id"
+                                        class="rounded-full border border-zinc-600 bg-zinc-900/70 px-3 py-1 text-xs text-zinc-200"
+                                    >
+                                        {{ skill.name }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section
+                        v-if="education.length > 0"
+                        class="resume-panel reveal-up rounded-2xl border border-white/10 p-6 sm:p-8"
+                    >
+                        <h2 class="resume-heading">Education</h2>
+                        <div class="mt-5 space-y-5">
+                            <article
+                                v-for="edu in education"
+                                :key="edu.id"
+                                class="rounded-xl border border-white/10 bg-black/20 p-4"
+                            >
+                                <h3 class="text-base font-medium text-zinc-100">
+                                    {{ edu.degree }}
+                                </h3>
+                                <p class="mt-1 text-sm text-red-300">
+                                    {{ edu.institution }}
+                                </p>
+                                <p class="mt-1 text-xs text-zinc-400">
+                                    {{ formatDate(edu.start_date) }} -
+                                    {{ formatDate(edu.end_date) }}
+                                </p>
+                                <p
+                                    v-if="edu.field_of_study"
+                                    class="mt-2 text-sm text-zinc-300"
+                                >
+                                    {{ edu.field_of_study }}
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+                </aside>
             </div>
-        </div>
+        </main>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <!-- Summary -->
-            <section v-if="profile?.summary" class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
-                <div class="bg-white rounded-lg shadow p-6">
-                    <p class="text-gray-700 leading-relaxed">
-                        {{ profile.summary }}
-                    </p>
-                </div>
-            </section>
-
-            <!-- Experience -->
-            <section v-if="experiences.length > 0" class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">
-                    Experience
-                </h2>
-                <div class="space-y-6">
-                    <div
-                        v-for="exp in experiences"
-                        :key="exp.id"
-                        class="bg-white rounded-lg shadow p-6"
-                    >
-                        <h3 class="text-xl font-semibold text-gray-900">
-                            {{ exp.position }}
-                        </h3>
-                        <p class="text-lg text-blue-600 mb-2">
-                            {{ exp.company }}
-                        </p>
-                        <p class="text-gray-600 mb-3">
-                            <span v-if="exp.location"
-                                >{{ exp.location }} •
-                            </span>
-                            {{ formatDate(exp.start_date) }} -
-                            {{
-                                exp.current
-                                    ? "Present"
-                                    : formatDate(exp.end_date)
-                            }}
-                        </p>
-                        <p
-                            v-if="exp.description"
-                            class="text-gray-700 whitespace-pre-line"
-                        >
-                            {{ exp.description }}
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education -->
-            <section v-if="education.length > 0" class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Education</h2>
-                <div class="space-y-6">
-                    <div
-                        v-for="edu in education"
-                        :key="edu.id"
-                        class="bg-white rounded-lg shadow p-6"
-                    >
-                        <h3 class="text-xl font-semibold text-gray-900">
-                            {{ edu.degree }}
-                        </h3>
-                        <p class="text-lg text-blue-600 mb-2">
-                            {{ edu.institution }}
-                        </p>
-                        <p class="text-gray-600 mb-3">
-                            <span v-if="edu.field_of_study"
-                                >{{ edu.field_of_study }} •
-                            </span>
-                            <span v-if="edu.location"
-                                >{{ edu.location }} •
-                            </span>
-                            <span v-if="edu.start_date || edu.end_date">
-                                {{ formatDate(edu.start_date) }} -
-                                {{ formatDate(edu.end_date) }}
-                            </span>
-                            <span v-if="edu.gpa"> • GPA: {{ edu.gpa }}</span>
-                        </p>
-                        <p
-                            v-if="edu.description"
-                            class="text-gray-700 whitespace-pre-line"
-                        >
-                            {{ edu.description }}
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills -->
-            <section v-if="skills.length > 0" class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Skills</h2>
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div
-                        v-for="(categorySkills, category) in groupedSkills"
-                        :key="category"
-                        class="mb-6 last:mb-0"
-                    >
-                        <h3
-                            v-if="category !== 'null'"
-                            class="text-lg font-semibold text-gray-900 mb-3"
-                        >
-                            {{ category }}
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                v-for="skill in categorySkills"
-                                :key="skill.id"
-                                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
-                            >
-                                {{ skill.name }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects -->
-            <section v-if="projects.length > 0" class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Projects</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div
-                        v-for="project in projects"
-                        :key="project.id"
-                        class="bg-white rounded-lg shadow p-6"
-                    >
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                            {{ project.name }}
-                        </h3>
-                        <p
-                            v-if="project.description"
-                            class="text-gray-700 mb-3"
-                        >
-                            {{ project.description }}
-                        </p>
-                        <div
-                            v-if="project.technologies?.length"
-                            class="flex flex-wrap gap-2 mb-3"
-                        >
-                            <span
-                                v-for="tech in project.technologies"
-                                :key="tech"
-                                class="bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs"
-                            >
-                                {{ tech }}
-                            </span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a
-                                v-if="project.url"
-                                :href="project.url"
-                                target="_blank"
-                                class="text-blue-600 hover:text-blue-800 text-sm"
-                                >View Project</a
-                            >
-                            <a
-                                v-if="project.github_url"
-                                :href="project.github_url"
-                                target="_blank"
-                                class="text-blue-600 hover:text-blue-800 text-sm"
-                                >GitHub</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Admin Login Link -->
-        <div class="fixed bottom-4 right-4">
+        <div class="fixed bottom-4 right-4 z-20">
             <Link
                 v-if="$page.props.auth.user"
                 href="/admin/dashboard"
-                class="bg-blue-600 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-700"
+                class="rounded-full border border-red-300/50 bg-red-500/20 px-5 py-2 text-sm font-medium text-red-100 backdrop-blur transition hover:bg-red-500/30"
             >
                 Admin Dashboard
             </Link>
             <Link
                 v-else
                 href="/login"
-                class="bg-gray-600 text-white px-4 py-2 rounded shadow-lg hover:bg-gray-700"
+                class="rounded-full border border-zinc-500 bg-zinc-900/70 px-5 py-2 text-sm font-medium text-zinc-100 backdrop-blur transition hover:border-red-300/60 hover:text-red-100"
             >
                 Login
             </Link>

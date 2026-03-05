@@ -22,7 +22,7 @@
                                     v-model="form.name"
                                     type="text"
                                     id="name"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     required
                                 />
                                 <div
@@ -44,7 +44,7 @@
                                     v-model="form.title"
                                     type="text"
                                     id="title"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.title"
@@ -65,7 +65,7 @@
                                     v-model="form.email"
                                     type="email"
                                     id="email"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.email"
@@ -86,7 +86,7 @@
                                     v-model="form.phone"
                                     type="text"
                                     id="phone"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.phone"
@@ -107,7 +107,7 @@
                                     v-model="form.location"
                                     type="text"
                                     id="location"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.location"
@@ -128,7 +128,7 @@
                                     v-model="form.linkedin"
                                     type="url"
                                     id="linkedin"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.linkedin"
@@ -149,7 +149,7 @@
                                     v-model="form.github"
                                     type="url"
                                     id="github"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.github"
@@ -170,7 +170,7 @@
                                     v-model="form.website"
                                     type="url"
                                     id="website"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.website"
@@ -191,7 +191,7 @@
                                     v-model="form.summary"
                                     id="summary"
                                     rows="6"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 ></textarea>
                                 <div
                                     v-if="form.errors.summary"
@@ -212,7 +212,7 @@
                             <button
                                 type="submit"
                                 :disabled="form.processing"
-                                class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50"
+                                class="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-500 disabled:opacity-50"
                             >
                                 {{
                                     form.processing
@@ -252,3 +252,4 @@ const submit = () => {
     form.put(route("admin.profile.update"));
 };
 </script>
+

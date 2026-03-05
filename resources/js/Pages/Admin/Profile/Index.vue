@@ -7,7 +7,7 @@
                 </h2>
                 <Link
                     :href="route('admin.profile.edit')"
-                    class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                    class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500"
                 >
                     Edit Profile
                 </Link>
@@ -58,7 +58,7 @@
                                 <a
                                     :href="profile.linkedin"
                                     target="_blank"
-                                    class="text-blue-600 hover:text-blue-800 block truncate"
+                                    class="text-red-300 hover:text-red-100 block truncate"
                                     >{{ profile.linkedin }}</a
                                 >
                             </div>
@@ -69,7 +69,7 @@
                                 <a
                                     :href="profile.github"
                                     target="_blank"
-                                    class="text-blue-600 hover:text-blue-800 block truncate"
+                                    class="text-red-300 hover:text-red-100 block truncate"
                                     >{{ profile.github }}</a
                                 >
                             </div>
@@ -80,7 +80,7 @@
                                 <a
                                     :href="profile.website"
                                     target="_blank"
-                                    class="text-blue-600 hover:text-blue-800 block truncate"
+                                    class="text-red-300 hover:text-red-100 block truncate"
                                     >{{ profile.website }}</a
                                 >
                             </div>
@@ -113,3 +113,4 @@ defineProps({
     profile: Object,
 });
 </script>
+
