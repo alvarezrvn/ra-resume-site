@@ -170,11 +170,11 @@ This project is optimized for **Laravel Herd**, which provides:
    ```
 
 6. **Create database**
-   
+
    **Using Laravel Herd:**
    - Herd automatically creates the database when running migrations
    - Database will be created automatically with default credentials
-   
+
    **Manual MySQL Setup:**
    ```bash
    mysql -u root -p
@@ -212,14 +212,14 @@ This project is optimized for **Laravel Herd**, which provides:
     ```
 
 11. **Start the application**
-    
+
     **Using Laravel Herd:**
     ```bash
     # Herd automatically serves the app
     # Access via: http://ra-resume-site.test
     # Or: http://ravena.test
     ```
-    
+
     **Using Laravel Artisan (alternative):**
     ```bash
     php artisan serve
