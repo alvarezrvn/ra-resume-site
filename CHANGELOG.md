@@ -100,13 +100,16 @@ All notable changes to this project will be documented in this file.
   - Order control for display sequence
 
 - **Development Setup**
+  - Laravel Herd integration for native PHP development environment
+  - Automatic `.test` domain configuration (ravena.test)
   - Environment configuration (.env)
   - Git repository initialization
   - GitHub repository setup (private)
-  - Comprehensive README.md documentation
+  - Comprehensive README.md documentation with Herd setup instructions
   - Project structure documentation
 
 #### Technical Specifications
+- **Development Environment**: Laravel Herd (Windows/macOS)
 - **Backend**: Laravel 12, PHP 8.2+
 - **Frontend**: Vue 3 (Composition API), Inertia.js 2.0
 - **Styling**: Tailwind CSS 3

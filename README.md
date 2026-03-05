@@ -62,6 +62,7 @@ A modern, full-stack personal resume website built with Laravel 12, Vue 3, and I
 - **Vite**: Fast build tool and dev server
 
 ### DevOps & Tools
+- **Laravel Herd**: Native PHP development environment for macOS and Windows
 - **Composer**: PHP dependency management
 - **NPM**: JavaScript package management
 - **Git**: Version control
@@ -114,11 +115,20 @@ Admin users for authentication
 ## 📦 Installation
 
 ### Prerequisites
-- PHP 8.2 or higher
-- Composer
-- Node.js & NPM
-- MySQL 8.0+
-- Git
+- **Laravel Herd** (includes PHP 8.2+, Composer, and local MySQL/PostgreSQL)
+  - Download from [herd.laravel.com](https://herd.laravel.com)
+  - Automatically configures local `.test` domains
+- **Node.js & NPM** (for asset compilation)
+- **Git** (for version control)
+
+### About Laravel Herd
+This project is optimized for **Laravel Herd**, which provides:
+- ✅ Built-in PHP 8.2+ with all required extensions
+- ✅ Automatic `.test` domain configuration (e.g., `ravena.test`)
+- ✅ Integrated database management (MySQL/PostgreSQL)
+- ✅ No need for separate server setup
+- ✅ Native performance (no Docker overhead)
+- ✅ One-click PHP version switching
 
 ### Step-by-Step Setup
 
@@ -145,7 +155,7 @@ Admin users for authentication
    ```
 
 5. **Configure database**
-   
+
    Edit `.env` file:
    ```env
    APP_NAME=RavenA
@@ -160,8 +170,13 @@ Admin users for authentication
    ```
 
 6. **Create database**
+   
+   **Using Laravel Herd:**
+   - Herd automatically creates the database when running migrations
+   - Database will be created automatically with default credentials
+   
+   **Manual MySQL Setup:**
    ```bash
-   # MySQL command line
    mysql -u root -p
    CREATE DATABASE ra_resume_site;
    exit;
@@ -197,11 +212,59 @@ Admin users for authentication
     ```
 
 11. **Start the application**
+    
+    **Using Laravel Herd:**
+    ```bash
+    # Herd automatically serves the app
+    # Access via: http://ra-resume-site.test
+    # Or: http://ravena.test
+    ```
+    
+    **Using Laravel Artisan (alternative):**
     ```bash
     php artisan serve
+    # Access via: http://localhost:8000
     ```
 
-Visit `http://localhost:8000` to see your resume!
+### 🚀 Quick Start with Laravel Herd
+
+If you're using Laravel Herd, here's the fastest setup:
+
+1. **Clone and navigate**
+   ```bash
+   cd ~/Herd  # Or your Herd directory (e.g., C:\Users\YourName\Herd on Windows)
+   git clone https://github.com/alvarezrvn/ra-resume-site.git
+   cd ra-resume-site
+   ```
+
+2. **Install dependencies**
+   ```bash
+   composer install
+   npm install --legacy-peer-deps
+   ```
+
+3. **Setup environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Run migrations and seed**
+   ```bash
+   php artisan migrate  # Herd creates database automatically
+   php artisan db:seed --class=ResumeDataSeeder
+   ```
+
+5. **Build assets**
+   ```bash
+   npm run build
+   ```
+
+6. **Access the site**
+   - Open browser to: `http://ra-resume-site.test` or `http://ravena.test`
+   - Herd automatically detects and serves the Laravel app!
+
+Visit your configured domain to see your resume!
 
 ## 🚀 Usage
 
@@ -319,12 +382,27 @@ ra-resume-site/
 ## 💻 Development
 
 ### Running Development Server
+
+**With Laravel Herd (Recommended):**
+```bash
+# No need to run php artisan serve - Herd handles it!
+# Just run the Vite dev server for hot reload
+npm run dev
+
+# Access your site at:
+# http://ra-resume-site.test or http://ravena.test
+```
+
+**Without Herd:**
 ```bash
 # Terminal 1 - Laravel server
 php artisan serve
 
 # Terminal 2 - Vite dev server (hot reload)
 npm run dev
+
+# Access your site at:
+# http://localhost:8000
 ```
 
 ### Building for Production
@@ -403,13 +481,14 @@ This project is open-sourced software licensed under the [MIT license](https://o
 ## 🙏 Acknowledgments
 
 - Built with [Laravel](https://laravel.com)
+- Development environment by [Laravel Herd](https://herd.laravel.com)
 - Frontend powered by [Vue.js](https://vuejs.org) and [Inertia.js](https://inertiajs.com)
 - Styled with [Tailwind CSS](https://tailwindcss.com)
 - Authentication by [Laravel Breeze](https://laravel.com/docs/starter-kits)
 
 ---
 
-**Project Created**: March 5, 2026  
+**Project Created**: March 5, 2026
 **Last Updated**: March 5, 2026
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
