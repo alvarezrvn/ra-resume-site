@@ -13,14 +13,14 @@ class ProjectController extends Controller
     {
         $projects = Project::orderBy('order')->orderBy('start_date', 'desc')->get();
 
-        return Inertia::render('Admin/Project/Index', [
+        return Inertia::render('Admin/Projects/Index', [
             'projects' => $projects,
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Admin/Project/Create');
+        return Inertia::render('Admin/Projects/Create');
     }
 
     public function store(Request $request)
@@ -44,7 +44,7 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        return Inertia::render('Admin/Project/Edit', [
+        return Inertia::render('Admin/Projects/Edit', [
             'project' => $project,
         ]);
     }

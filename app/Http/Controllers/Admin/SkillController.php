@@ -13,14 +13,14 @@ class SkillController extends Controller
     {
         $skills = Skill::orderBy('order')->orderBy('category')->get();
 
-        return Inertia::render('Admin/Skill/Index', [
+        return Inertia::render('Admin/Skills/Index', [
             'skills' => $skills,
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Admin/Skill/Create');
+        return Inertia::render('Admin/Skills/Create');
     }
 
     public function store(Request $request)
@@ -40,7 +40,7 @@ class SkillController extends Controller
 
     public function edit(Skill $skill)
     {
-        return Inertia::render('Admin/Skill/Edit', [
+        return Inertia::render('Admin/Skills/Edit', [
             'skill' => $skill,
         ]);
     }

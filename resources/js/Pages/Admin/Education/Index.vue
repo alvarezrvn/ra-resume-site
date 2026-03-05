@@ -3,13 +3,13 @@
         <template #header>
             <div class="flex justify-between items-center">
                 <h2 class="font-semibold text-xl text-zinc-100 leading-tight">
-                    Manage Experience
+                    Manage Education
                 </h2>
                 <Link
-                    :href="route('admin.experiences.create')"
+                    :href="route('admin.education.create')"
                     class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500"
                 >
-                    Add Experience
+                    Add Education
                 </Link>
             </div>
         </template>
@@ -27,10 +27,10 @@
                     class="bg-zinc-900 overflow-hidden shadow-sm sm:rounded-lg"
                 >
                     <div
-                        v-if="experiences.length === 0"
+                        v-if="education.length === 0"
                         class="p-6 text-zinc-400 text-center"
                     >
-                        No experience entries yet. Click "Add Experience" to
+                        No education entries yet. Click "Add Education" to
                         create one.
                     </div>
                     <div v-else class="p-6">
@@ -42,8 +42,8 @@
                         </Link>
                         <div class="space-y-4">
                             <div
-                                v-for="experience in experiences"
-                                :key="experience.id"
+                                v-for="item in education"
+                                :key="item.id"
                                 class="border border-zinc-700 rounded-lg p-4 hover:shadow-md transition"
                             >
                                 <div class="flex justify-between items-start">
@@ -51,39 +51,41 @@
                                         <h3
                                             class="text-lg font-semibold text-zinc-100"
                                         >
-                                            {{ experience.position }}
+                                            {{ item.degree }}
                                         </h3>
                                         <p class="text-zinc-300">
-                                            {{ experience.company }}
-                                        </p>
-                                        <p class="text-sm text-zinc-400">
-                                            {{
-                                                formatDate(
-                                                    experience.start_date,
-                                                )
-                                            }}
-                                            -
-                                            {{
-                                                experience.current
-                                                    ? "Present"
-                                                    : formatDate(
-                                                          experience.end_date,
-                                                      )
-                                            }}
+                                            {{ item.institution }}
                                         </p>
                                         <p
-                                            v-if="experience.description"
+                                            v-if="item.field_of_study"
+                                            class="text-sm text-zinc-400"
+                                        >
+                                            {{ item.field_of_study }}
+                                        </p>
+                                        <p class="text-sm text-zinc-400">
+                                            {{ formatDate(item.start_date) }}
+                                            -
+                                            {{ formatDate(item.end_date) }}
+                                        </p>
+                                        <p
+                                            v-if="item.gpa"
+                                            class="text-sm text-zinc-400"
+                                        >
+                                            GPA: {{ item.gpa }}
+                                        </p>
+                                        <p
+                                            v-if="item.description"
                                             class="text-zinc-300 mt-2 line-clamp-2"
                                         >
-                                            {{ experience.description }}
+                                            {{ item.description }}
                                         </p>
                                     </div>
                                     <div class="flex space-x-2 ml-4">
                                         <Link
                                             :href="
                                                 route(
-                                                    'admin.experiences.edit',
-                                                    experience.id,
+                                                    'admin.education.edit',
+                                                    item.id,
                                                 )
                                             "
                                             class="text-red-300 hover:text-red-100 px-3 py-1 border border-red-400 rounded"
@@ -91,9 +93,7 @@
                                             Edit
                                         </Link>
                                         <button
-                                            @click="
-                                                deleteExperience(experience.id)
-                                            "
+                                            @click="deleteEducation(item.id)"
                                             class="text-red-600 hover:text-red-800 px-3 py-1 border border-red-600 rounded"
                                         >
                                             Delete
@@ -115,7 +115,7 @@ import { Link, router } from "@inertiajs/vue3";
 import { parseISO, format } from "date-fns";
 
 defineProps({
-    experiences: Array,
+    education: Array,
 });
 
 const formatDate = (date) => {
@@ -124,9 +124,9 @@ const formatDate = (date) => {
     return format(parseISO(date), "MMM yyyy");
 };
 
-const deleteExperience = (id) => {
-    if (confirm("Are you sure you want to delete this experience?")) {
-        router.delete(route("admin.experiences.destroy", id));
+const deleteEducation = (id) => {
+    if (confirm("Are you sure you want to delete this education entry?")) {
+        router.delete(route("admin.education.destroy", id));
     }
 };
 </script>

@@ -9,7 +9,7 @@
                     ← Dashboard
                 </Link>
                 <h2 class="font-semibold text-xl text-zinc-100 leading-tight">
-                    Add Experience
+                    Add Project
                 </h2>
             </div>
         </template>
@@ -21,89 +21,94 @@
                 >
                     <form @submit.prevent="submit" class="p-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Company -->
-                            <div>
+                            <!-- Name -->
+                            <div class="md:col-span-2">
                                 <label
-                                    for="company"
+                                    for="name"
                                     class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Company *</label
+                                    >Project Name *</label
                                 >
                                 <input
-                                    v-model="form.company"
+                                    v-model="form.name"
                                     type="text"
-                                    id="company"
+                                    id="name"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     required
                                 />
                                 <div
-                                    v-if="form.errors.company"
+                                    v-if="form.errors.name"
                                     class="text-red-600 text-sm mt-1"
                                 >
-                                    {{ form.errors.company }}
+                                    {{ form.errors.name }}
                                 </div>
                             </div>
 
-                            <!-- Position -->
+                            <!-- URL -->
                             <div>
                                 <label
-                                    for="position"
+                                    for="url"
                                     class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Position *</label
+                                    >Live URL</label
                                 >
                                 <input
-                                    v-model="form.position"
+                                    v-model="form.url"
+                                    type="url"
+                                    id="url"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    placeholder="https://example.com"
+                                />
+                                <div
+                                    v-if="form.errors.url"
+                                    class="text-red-600 text-sm mt-1"
+                                >
+                                    {{ form.errors.url }}
+                                </div>
+                            </div>
+
+                            <!-- GitHub URL -->
+                            <div>
+                                <label
+                                    for="github_url"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
+                                    >GitHub URL</label
+                                >
+                                <input
+                                    v-model="form.github_url"
+                                    type="url"
+                                    id="github_url"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    placeholder="https://github.com/username/repo"
+                                />
+                                <div
+                                    v-if="form.errors.github_url"
+                                    class="text-red-600 text-sm mt-1"
+                                >
+                                    {{ form.errors.github_url }}
+                                </div>
+                            </div>
+
+                            <!-- Technologies -->
+                            <div class="md:col-span-2">
+                                <label
+                                    for="technologies"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
+                                    >Technologies (comma-separated)</label
+                                >
+                                <input
+                                    v-model="technologiesInput"
                                     type="text"
-                                    id="position"
+                                    id="technologies"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    required
+                                    placeholder="e.g., Laravel, Vue.js, Tailwind CSS"
                                 />
+                                <p class="text-xs text-zinc-400 mt-1">
+                                    Separate technologies with commas
+                                </p>
                                 <div
-                                    v-if="form.errors.position"
+                                    v-if="form.errors.technologies"
                                     class="text-red-600 text-sm mt-1"
                                 >
-                                    {{ form.errors.position }}
-                                </div>
-                            </div>
-
-                            <!-- Location -->
-                            <div>
-                                <label
-                                    for="location"
-                                    class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Location</label
-                                >
-                                <input
-                                    v-model="form.location"
-                                    type="text"
-                                    id="location"
-                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                />
-                                <div
-                                    v-if="form.errors.location"
-                                    class="text-red-600 text-sm mt-1"
-                                >
-                                    {{ form.errors.location }}
-                                </div>
-                            </div>
-
-                            <!-- Order -->
-                            <div>
-                                <label
-                                    for="order"
-                                    class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Display Order</label
-                                >
-                                <input
-                                    v-model.number="form.order"
-                                    type="number"
-                                    id="order"
-                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                />
-                                <div
-                                    v-if="form.errors.order"
-                                    class="text-red-600 text-sm mt-1"
-                                >
-                                    {{ form.errors.order }}
+                                    {{ form.errors.technologies }}
                                 </div>
                             </div>
 
@@ -112,14 +117,13 @@
                                 <label
                                     for="start_date"
                                     class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Start Date *</label
+                                    >Start Date</label
                                 >
                                 <input
                                     v-model="form.start_date"
                                     type="date"
                                     id="start_date"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    required
                                 />
                                 <div
                                     v-if="form.errors.start_date"
@@ -141,8 +145,10 @@
                                     type="date"
                                     id="end_date"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    :disabled="form.current"
                                 />
+                                <p class="text-xs text-zinc-400 mt-1">
+                                    Leave blank for ongoing projects
+                                </p>
                                 <div
                                     v-if="form.errors.end_date"
                                     class="text-red-600 text-sm mt-1"
@@ -151,18 +157,25 @@
                                 </div>
                             </div>
 
-                            <!-- Current Position -->
+                            <!-- Order -->
                             <div class="md:col-span-2">
-                                <label class="flex items-center">
-                                    <input
-                                        v-model="form.current"
-                                        type="checkbox"
-                                        class="rounded border-gray-300 text-red-300 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    />
-                                    <span class="ml-2 text-sm text-zinc-200"
-                                        >I currently work here</span
-                                    >
-                                </label>
+                                <label
+                                    for="order"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
+                                    >Display Order</label
+                                >
+                                <input
+                                    v-model.number="form.order"
+                                    type="number"
+                                    id="order"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                />
+                                <div
+                                    v-if="form.errors.order"
+                                    class="text-red-600 text-sm mt-1"
+                                >
+                                    {{ form.errors.order }}
+                                </div>
                             </div>
 
                             <!-- Description -->
@@ -177,7 +190,7 @@
                                     id="description"
                                     rows="6"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    placeholder="Describe your responsibilities and achievements..."
+                                    placeholder="Describe the project, your role, and key achievements..."
                                 ></textarea>
                                 <div
                                     v-if="form.errors.description"
@@ -190,10 +203,10 @@
 
                         <div class="flex items-center justify-between mt-6">
                             <Link
-                                :href="route('admin.experiences.index')"
+                                :href="route('admin.projects.index')"
                                 class="text-zinc-400 hover:text-zinc-200"
                             >
-                                ← Back to Experience List
+                                ← Back to Projects List
                             </Link>
                             <button
                                 type="submit"
@@ -203,7 +216,7 @@
                                 {{
                                     form.processing
                                         ? "Creating..."
-                                        : "Create Experience"
+                                        : "Create Project"
                                 }}
                             </button>
                         </div>
@@ -217,19 +230,31 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Link, useForm } from "@inertiajs/vue3";
+import { ref, watch } from "vue";
 
 const form = useForm({
-    company: "",
-    position: "",
-    location: "",
+    name: "",
+    description: "",
+    url: "",
+    github_url: "",
+    technologies: [],
     start_date: "",
     end_date: "",
-    current: false,
-    description: "",
     order: 0,
 });
 
+const technologiesInput = ref("");
+
+watch(technologiesInput, (value) => {
+    form.technologies = value
+        ? value
+              .split(",")
+              .map((tech) => tech.trim())
+              .filter(Boolean)
+        : [];
+});
+
 const submit = () => {
-    form.post(route("admin.experiences.store"));
+    form.post(route("admin.projects.store"));
 };
 </script>

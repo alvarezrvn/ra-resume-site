@@ -1,17 +1,9 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <div class="flex items-center gap-4">
-                <Link
-                    :href="route('admin.dashboard')"
-                    class="text-zinc-400 hover:text-zinc-200"
-                >
-                    ← Dashboard
-                </Link>
-                <h2 class="font-semibold text-xl text-zinc-100 leading-tight">
-                    Add Experience
-                </h2>
-            </div>
+            <h2 class="font-semibold text-xl text-zinc-100 leading-tight">
+                Edit Education
+            </h2>
         </template>
 
         <div class="py-12">
@@ -21,47 +13,68 @@
                 >
                     <form @submit.prevent="submit" class="p-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Company -->
-                            <div>
+                            <!-- Institution -->
+                            <div class="md:col-span-2">
                                 <label
-                                    for="company"
+                                    for="institution"
                                     class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Company *</label
+                                    >Institution *</label
                                 >
                                 <input
-                                    v-model="form.company"
+                                    v-model="form.institution"
                                     type="text"
-                                    id="company"
+                                    id="institution"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     required
                                 />
                                 <div
-                                    v-if="form.errors.company"
+                                    v-if="form.errors.institution"
                                     class="text-red-600 text-sm mt-1"
                                 >
-                                    {{ form.errors.company }}
+                                    {{ form.errors.institution }}
                                 </div>
                             </div>
 
-                            <!-- Position -->
+                            <!-- Degree -->
                             <div>
                                 <label
-                                    for="position"
+                                    for="degree"
                                     class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Position *</label
+                                    >Degree *</label
                                 >
                                 <input
-                                    v-model="form.position"
+                                    v-model="form.degree"
                                     type="text"
-                                    id="position"
+                                    id="degree"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     required
                                 />
                                 <div
-                                    v-if="form.errors.position"
+                                    v-if="form.errors.degree"
                                     class="text-red-600 text-sm mt-1"
                                 >
-                                    {{ form.errors.position }}
+                                    {{ form.errors.degree }}
+                                </div>
+                            </div>
+
+                            <!-- Field of Study -->
+                            <div>
+                                <label
+                                    for="field_of_study"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
+                                    >Field of Study</label
+                                >
+                                <input
+                                    v-model="form.field_of_study"
+                                    type="text"
+                                    id="field_of_study"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                />
+                                <div
+                                    v-if="form.errors.field_of_study"
+                                    class="text-red-600 text-sm mt-1"
+                                >
+                                    {{ form.errors.field_of_study }}
                                 </div>
                             </div>
 
@@ -86,24 +99,24 @@
                                 </div>
                             </div>
 
-                            <!-- Order -->
+                            <!-- GPA -->
                             <div>
                                 <label
-                                    for="order"
+                                    for="gpa"
                                     class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Display Order</label
+                                    >GPA</label
                                 >
                                 <input
-                                    v-model.number="form.order"
-                                    type="number"
-                                    id="order"
+                                    v-model="form.gpa"
+                                    type="text"
+                                    id="gpa"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
-                                    v-if="form.errors.order"
+                                    v-if="form.errors.gpa"
                                     class="text-red-600 text-sm mt-1"
                                 >
-                                    {{ form.errors.order }}
+                                    {{ form.errors.gpa }}
                                 </div>
                             </div>
 
@@ -112,14 +125,13 @@
                                 <label
                                     for="start_date"
                                     class="block text-sm font-medium text-zinc-200 mb-2"
-                                    >Start Date *</label
+                                    >Start Date</label
                                 >
                                 <input
                                     v-model="form.start_date"
                                     type="date"
                                     id="start_date"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    required
                                 />
                                 <div
                                     v-if="form.errors.start_date"
@@ -141,7 +153,6 @@
                                     type="date"
                                     id="end_date"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    :disabled="form.current"
                                 />
                                 <div
                                     v-if="form.errors.end_date"
@@ -151,18 +162,25 @@
                                 </div>
                             </div>
 
-                            <!-- Current Position -->
-                            <div class="md:col-span-2">
-                                <label class="flex items-center">
-                                    <input
-                                        v-model="form.current"
-                                        type="checkbox"
-                                        class="rounded border-gray-300 text-red-300 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    />
-                                    <span class="ml-2 text-sm text-zinc-200"
-                                        >I currently work here</span
-                                    >
-                                </label>
+                            <!-- Order -->
+                            <div>
+                                <label
+                                    for="order"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
+                                    >Display Order</label
+                                >
+                                <input
+                                    v-model.number="form.order"
+                                    type="number"
+                                    id="order"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                />
+                                <div
+                                    v-if="form.errors.order"
+                                    class="text-red-600 text-sm mt-1"
+                                >
+                                    {{ form.errors.order }}
+                                </div>
                             </div>
 
                             <!-- Description -->
@@ -177,7 +195,7 @@
                                     id="description"
                                     rows="6"
                                     class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
-                                    placeholder="Describe your responsibilities and achievements..."
+                                    placeholder="Describe your achievements, honors, or relevant coursework..."
                                 ></textarea>
                                 <div
                                     v-if="form.errors.description"
@@ -190,10 +208,10 @@
 
                         <div class="flex items-center justify-between mt-6">
                             <Link
-                                :href="route('admin.experiences.index')"
+                                :href="route('admin.education.index')"
                                 class="text-zinc-400 hover:text-zinc-200"
                             >
-                                ← Back to Experience List
+                                ← Back to Education List
                             </Link>
                             <button
                                 type="submit"
@@ -202,8 +220,8 @@
                             >
                                 {{
                                     form.processing
-                                        ? "Creating..."
-                                        : "Create Experience"
+                                        ? "Updating..."
+                                        : "Update Education"
                                 }}
                             </button>
                         </div>
@@ -218,18 +236,29 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Link, useForm } from "@inertiajs/vue3";
 
+const props = defineProps({
+    education: Object,
+});
+
+const formatDateForInput = (date) => {
+    if (!date) return "";
+    // Extract just the date part (YYYY-MM-DD) from various formats
+    return date.split(" ")[0].split("T")[0];
+};
+
 const form = useForm({
-    company: "",
-    position: "",
-    location: "",
-    start_date: "",
-    end_date: "",
-    current: false,
-    description: "",
-    order: 0,
+    institution: props.education.institution,
+    degree: props.education.degree,
+    field_of_study: props.education.field_of_study,
+    location: props.education.location,
+    start_date: formatDateForInput(props.education.start_date),
+    end_date: formatDateForInput(props.education.end_date),
+    gpa: props.education.gpa,
+    description: props.education.description,
+    order: props.education.order,
 });
 
 const submit = () => {
-    form.post(route("admin.experiences.store"));
+    form.put(route("admin.education.update", props.education.id));
 };
 </script>

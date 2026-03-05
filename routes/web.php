@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 // Public resume page
 Route::get('/', [ResumeController::class, 'index'])->name('resume.index');
 
+// Compatibility alias for Breeze defaults
+Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
+    return redirect()->route('admin.dashboard');
+})->name('dashboard');
+
 // Admin routes (protected by auth middleware)
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     // Dashboard

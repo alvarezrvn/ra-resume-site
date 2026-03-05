@@ -1,28 +1,30 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-zinc-100 leading-tight">
                 Edit Profile
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div
+                    class="bg-zinc-900 overflow-hidden shadow-sm sm:rounded-lg"
+                >
                     <form @submit.prevent="submit" class="p-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Name -->
                             <div class="md:col-span-2">
                                 <label
                                     for="name"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >Full Name *</label
                                 >
                                 <input
                                     v-model="form.name"
                                     type="text"
                                     id="name"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                     required
                                 />
                                 <div
@@ -37,14 +39,14 @@
                             <div class="md:col-span-2">
                                 <label
                                     for="title"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >Professional Title</label
                                 >
                                 <input
                                     v-model="form.title"
                                     type="text"
                                     id="title"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.title"
@@ -58,14 +60,14 @@
                             <div>
                                 <label
                                     for="email"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >Email</label
                                 >
                                 <input
                                     v-model="form.email"
                                     type="email"
                                     id="email"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.email"
@@ -79,14 +81,14 @@
                             <div>
                                 <label
                                     for="phone"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >Phone</label
                                 >
                                 <input
                                     v-model="form.phone"
                                     type="text"
                                     id="phone"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.phone"
@@ -100,14 +102,14 @@
                             <div>
                                 <label
                                     for="location"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >Location</label
                                 >
                                 <input
                                     v-model="form.location"
                                     type="text"
                                     id="location"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.location"
@@ -121,14 +123,14 @@
                             <div>
                                 <label
                                     for="linkedin"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >LinkedIn URL</label
                                 >
                                 <input
                                     v-model="form.linkedin"
                                     type="url"
                                     id="linkedin"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.linkedin"
@@ -142,14 +144,14 @@
                             <div>
                                 <label
                                     for="github"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >GitHub URL</label
                                 >
                                 <input
                                     v-model="form.github"
                                     type="url"
                                     id="github"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.github"
@@ -163,14 +165,14 @@
                             <div>
                                 <label
                                     for="website"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >Website URL</label
                                 >
                                 <input
                                     v-model="form.website"
                                     type="url"
                                     id="website"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 />
                                 <div
                                     v-if="form.errors.website"
@@ -184,14 +186,14 @@
                             <div class="md:col-span-2">
                                 <label
                                     for="summary"
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    class="block text-sm font-medium text-zinc-200 mb-2"
                                     >Professional Summary</label
                                 >
                                 <textarea
                                     v-model="form.summary"
                                     id="summary"
                                     rows="6"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-red-400 focus:ring-red-400"
+                                    class="w-full rounded-md bg-zinc-800 border-zinc-700 text-zinc-100 shadow-sm focus:border-red-400 focus:ring-red-400"
                                 ></textarea>
                                 <div
                                     v-if="form.errors.summary"
@@ -205,7 +207,7 @@
                         <div class="flex items-center justify-between mt-6">
                             <Link
                                 :href="route('admin.dashboard')"
-                                class="text-gray-600 hover:text-gray-900"
+                                class="text-zinc-400 hover:text-zinc-200"
                             >
                                 ← Back to Dashboard
                             </Link>
@@ -252,4 +254,3 @@ const submit = () => {
     form.put(route("admin.profile.update"));
 };
 </script>
-

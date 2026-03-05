@@ -287,6 +287,7 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
 import { computed } from "vue";
+import { parseISO, format } from "date-fns";
 
 const props = defineProps({
     profile: Object,
@@ -309,9 +310,6 @@ const groupedSkills = computed(() => {
 
 const formatDate = (date) => {
     if (!date) return "";
-    return new Date(date).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-    });
+    return format(parseISO(date), "MMM yyyy");
 };
 </script>
