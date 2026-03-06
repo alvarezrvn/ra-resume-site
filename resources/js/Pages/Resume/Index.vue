@@ -329,6 +329,8 @@ const groupedSkills = computed(() => {
 
 const formatDate = (date) => {
     if (!date) return "";
-    return format(parseISO(date), "MMM yyyy");
+    // Extract just the date part (YYYY-MM-DD) to avoid timezone issues
+    const dateOnly = date.split("T")[0];
+    return format(parseISO(dateOnly), "MMM yyyy");
 };
 </script>
