@@ -299,9 +299,8 @@
 </template>
 
 <script setup>
+import { useFormatDate } from "@/composables/useFormatDate";
 import { Link } from "@inertiajs/vue3";
-
-import { format, parseISO } from "date-fns";
 import { computed } from "vue";
 
 const props = defineProps({
@@ -311,6 +310,8 @@ const props = defineProps({
     skills: Array,
     projects: Array,
 });
+
+const { formatDate } = useFormatDate();
 
 const profileImageUrl = "/assets/profile-image.jpg";
 const resumeFileName = "Raven_Alvarez_Resume_2026.docx";
@@ -326,11 +327,4 @@ const groupedSkills = computed(() => {
         return acc;
     }, {});
 });
-
-const formatDate = (date) => {
-    if (!date) return "";
-    // Extract just the date part (YYYY-MM-DD) to avoid timezone issues
-    const dateOnly = date.split("T")[0];
-    return format(parseISO(dateOnly), "MMM yyyy");
-};
 </script>

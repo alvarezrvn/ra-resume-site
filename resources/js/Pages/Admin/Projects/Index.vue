@@ -145,19 +145,15 @@
 </template>
 
 <script setup>
+import { useFormatDate } from "@/composables/useFormatDate";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Link, router } from "@inertiajs/vue3";
-import { format, parseISO } from "date-fns";
 
 defineProps({
     projects: Array,
 });
 
-const formatDate = (date) => {
-    if (!date) return "";
-    // Parse the date string and format it
-    return format(parseISO(date), "MMM yyyy");
-};
+const { formatDate } = useFormatDate();
 
 const deleteProject = (id) => {
     if (confirm("Are you sure you want to delete this project?")) {
